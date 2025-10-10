@@ -1,0 +1,96 @@
+mysql> use database vivek_data;
+ERROR 1049 (42000): Unknown database 'database'
+mysql> show databases;
++----------------------+
+| Database             |
++----------------------+
+| information_schema   |
+| mysql                |
+| performance_schema   |
+| sakila               |
+| studentfacultyserver |
+| sys                  |
+| vivek_data           |
+| world                |
++----------------------+
+8 rows in set (0.05 sec)
+
+mysql> use vivek_data;
+Database changed
+mysql> select * from emp;
++---------+-----------+------+
+| name    | company   | age  |
++---------+-----------+------+
+| vivek   | google    |   22 |
+| murali  | tcs       |   21 |
+| hemasai | microsoft |   21 |
+| ganesh  | accenture |   21 |
+| keerthi | wipro     |   22 |
+| nandini | openai    |   21 |
++---------+-----------+------+
+6 rows in set (0.01 sec)
+
+mysql> create table emp1(name varchar(100),company varchar(100),age int);
+Query OK, 0 rows affected (0.16 sec)
+
+mysql> select * from emp1;
+Empty set (0.01 sec)
+
+mysql> insert into emp1 values('vivek','google',22),('murali','tcs',21),('hemasai','microsoft',21);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp;
++---------+-----------+------+
+| name    | company   | age  |
++---------+-----------+------+
+| vivek   | google    |   22 |
+| murali  | tcs       |   21 |
+| hemasai | microsoft |   21 |
+| ganesh  | accenture |   21 |
+| keerthi | wipro     |   22 |
+| nandini | openai    |   21 |
++---------+-----------+------+
+6 rows in set (0.00 sec)
+
+mysql> select * from emp1;
++---------+-----------+------+
+| name    | company   | age  |
++---------+-----------+------+
+| vivek   | google    |   22 |
+| murali  | tcs       |   21 |
+| hemasai | microsoft |   21 |
++---------+-----------+------+
+3 rows in set (0.00 sec)
+
+mysql> update emp set age=22 where name='ganesh';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp;
++---------+-----------+------+
+| name    | company   | age  |
++---------+-----------+------+
+| vivek   | google    |   22 |
+| murali  | tcs       |   21 |
+| hemasai | microsoft |   21 |
+| ganesh  | accenture |   22 |
+| keerthi | wipro     |   22 |
+| nandini | openai    |   21 |
++---------+-----------+------+
+6 rows in set (0.00 sec)
+
+mysql> delete from emp where name='nandini';
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from emp;
++---------+-----------+------+
+| name    | company   | age  |
++---------+-----------+------+
+| vivek   | google    |   22 |
+| murali  | tcs       |   21 |
+| hemasai | microsoft |   21 |
+| ganesh  | accenture |   22 |
+| keerthi | wipro     |   22 |
++---------+-----------+------+
+5 rows in set (0.04 sec)
